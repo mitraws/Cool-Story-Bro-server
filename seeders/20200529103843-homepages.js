@@ -8,7 +8,7 @@ module.exports = {
        {
          title: "foodpage",
          description: "All about food",
-         backgroundColor: "#ffffff",
+         backgroundColor: "##FFB6C1",
          color: "#000000",
          userId: 2,
          createdAt: new Date(),
