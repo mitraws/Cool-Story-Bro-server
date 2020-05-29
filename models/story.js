@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     homepageId: DataTypes.INTEGER
   }, {});
   story.associate = function(models) {
-    // associations can be defined here
+    story.belongsTo(models.homepage);
   };
   return story;
 };

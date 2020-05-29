@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER
   }, {});
   homepage.associate = function(models) {
-    // associations can be defined here
+    homepage.belongsTo(models.user);
+    homepage.hasMany(models.story);
   };
   return homepage;
 };
