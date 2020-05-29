@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     backgroundColor: DataTypes.STRING,
     color: DataTypes.STRING,
-    userid: DataTypes.INTEGER
+    userId: DataTypes.INTEGER
   }, {});
   homepage.associate = function(models) {
     // associations can be defined here
