@@ -21,7 +21,7 @@ module.exports = {
       color: {
         type: Sequelize.STRING
       },
-      userid: {
+      userId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
