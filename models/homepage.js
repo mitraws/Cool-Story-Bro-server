@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const homepage = sequelize.define('homepage', {
-    title: DataTypes.STRING,
+    title: {type: DataTypes.STRING, allowNull: false},
     description: DataTypes.TEXT,
     backgroundColor: DataTypes.STRING,
     color: DataTypes.STRING,
