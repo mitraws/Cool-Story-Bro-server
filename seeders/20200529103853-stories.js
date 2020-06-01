@@ -6,8 +6,8 @@ module.exports = {
       "stories",
       [
         {
-          name: "heavenly delicious drums",
-          content: "these drums are very drumy, with drummy drum drums and drum for every drum in drum drums. Drummy drum drums drummers for drum is the best drums your mouth has every experienced.",
+          name: "Heavenly delicious drums",
+          content: "These drums are very drumy, with drummy drum drums and drum for every drum in drum drums. Drummy drum drums drummers for drum is the best drums your mouth has every experienced.",
           imageUrl: "https://p0.pikrepo.com/preview/915/473/fried-meat-with-sauce-in-aluminum-foil-thumbnail.jpg",
           homepageId: 1,
           createdAt: new Date(),
@@ -15,7 +15,7 @@ module.exports = {
         },
         {
           name: "#39 student turning vegan",
-          content: "Permission to post the following story is granted by the student. - When i became vegan 2 years ago, the amount of vegan junk food was AT LEAST 50% of what's available now. The choice overwhelming now. I can choose between like 5 versions of imitation 'meat' ",
+          content: "When i became vegan 2 years ago, the amount of vegan junk food was AT LEAST 50% of what's available now. The choice overwhelming now. I can choose between like 5 versions of imitation 'meat' ",
           imageUrl: "https://live.staticflickr.com/7817/47279337891_bba8919bb9_b.jpg",
           homepageId: 1,
           createdAt: new Date(),
@@ -31,7 +31,7 @@ module.exports = {
         },
         {
           name: "To chips or not to chips",
-          content: "Last week i discovered this new chips site which opened up a whole new world, just like aladdin. There were all kinds you can imagine, grass chips, gumbum chips, and even popular bad chips. Unfortunately, the site is under construction in a groupproject belonging to something called #39 Redux. If anyone knows more about this please let me know! If i discover the site is back up ill paste the link here straight away! For now, the pic will suffice.",
+          content: "Last week i discovered this new chips site which opened up a whole new world, just like aladdin. There were all kinds you can imagine, grass chips, gumbum chips, and even popular bad chips. Unfortunately, the site is under construction by something called #39 Redux. If anyone knows what this is please let me know!",
           imageUrl: "https://media.discordapp.net/attachments/712277668611227669/715626346205937798/unknown.png?width=602&height=472",
           homepageId: 1,
           createdAt: new Date(),

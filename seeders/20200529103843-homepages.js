@@ -6,7 +6,7 @@ module.exports = {
      "homepages",
      [
        {
-         title: "foodpage",
+         title: "Foodpage",
          description: "All about food",
          backgroundColor: "#FFB6C1",
          color: "#000000",
@@ -15,7 +15,7 @@ module.exports = {
          updatedAt: new Date(),
        },
        {
-        title: "sportspage",
+        title: "Sportspage",
         description: "All about sports",
         backgroundColor: "#000000",
         color: "#ffffff",
