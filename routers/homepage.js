@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const auth = require("../auth/middleware");
 const Homepage = require("../models").homepage;
 const Story = require("../models").story;
 
@@ -16,68 +17,53 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/:id", async (req, res) => {
-    const { id } = req.params;
-  
-    console.log(id);
-    if (isNaN(parseInt(id))) {
-      return res.status(400).send({ message: "Homepage id is not a number" });
-    }
-  
-    const homepage = await Homepage.findByPk(id, {
-      include: [Story],
-      order: [[Story, "createdAt", "DESC"]]
-    });
+  const { id } = req.params;
 
-    if (homepage === null) {
-        return res.status(404).send({ message: "Homepage not found" });
-      }
-    
-      res.status(200).send({ message: "ok", homepage });
-    });
+  console.log(id);
+  if (isNaN(parseInt(id))) {
+    return res.status(400).send({ message: "Homepage id is not a number" });
+  }
 
-// router.post("/", async (req, res, next) => {
-//   try {
-//     const image = await Image.create(req.body);
-//     res.json(image);
-//   } catch (e) {
-//     next(e);
-//   }
-// });
+  const homepage = await Homepage.findByPk(id, {
+    include: [Story],
+    order: [[Story, "createdAt", "DESC"]],
+  });
 
-// router.get("/", async (req, res, next) => {
-//     try {
-//       const image = await Image.findOne();
-//       res.send(image);
-//     } catch (e) {
-//       next(e);
-//     }
-//   });
+  if (homepage === null) {
+    return res.status(404).send({ message: "Homepage not found" });
+  }
 
-//   router.get("/", (req, res, next) => {
-//     const limit = Math.min(req.query.limit || 25, 500);
-//     const offset = req.query.offset || 0;
-  
-//     Image.findAndCountAll({ limit, offset })
-//       .then((result) => res.send({ images: result.rows, total: result.count }))
-//       .catch((error) => next(error));
-//   });
+  res.status(200).send({ message: "ok", homepage });
+});
 
+router.post("/:id/stories", auth, async (req, res) => {
+  const homepage = await Homepage.findByPk(req.params.id);
+  console.log(homepage);
 
-//   router.get("/auth/messy", async (req, res, next) => {
-//     const auth = req.headers.authorization && req.headers.authorization.split(" ");
-//     if (auth && auth[0] === "Bearer" && auth[1]) {
-//       try {
-//         const data = toData(auth[1]);
-//       } catch (e) {
-//         res.status(400).send("Invalid JWT token");
-//       }
-//       const allImages = await Image.findAll();
-//       res.json(allImages);
-//     } else {
-//       res.status(401).send({
-//         message: "Please supply some valid credentials",
-//       });
-//     }
-//   });
+  if (homepage === null) {
+    return res.status(404).send({ message: "This homepage does not exist" });
+  }
+
+  if (!homepage.userId === req.user.id) {
+    return res
+      .status(403)
+      .send({ message: "You are not authorized to update this homepage" });
+  }
+
+  const { name, imageUrl, content } = req.body;
+
+  if (!name) {
+    return res.status(400).send({ message: "A story must have a name" });
+  }
+
+  const story = await Story.create({
+    name,
+    imageUrl,
+    content,
+    homepageId: homepage.id,
+  });
+
+  return res.status(201).send({ message: "Story created", story });
+});
 
 module.exports = router;
